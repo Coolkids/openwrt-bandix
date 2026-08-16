@@ -87,9 +87,8 @@ jobs:
       - name: Generate new tag & release
         if: steps.check_version.outputs.has_update == 'true'
         uses: softprops/action-gh-release@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
+          token: ${{ secrets.release_token }}
           tag_name: ${{steps.check_version.outputs.latest_version}}
           name: ${{steps.check_version.outputs.latest_version}}
           target_commitish: ${{ github.ref_name }}
@@ -323,8 +322,7 @@ jobs:
       - name: Upload to release
         uses: softprops/action-gh-release@v3
         if: steps.compile.outputs.status == 'success'
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
+          token: ${{ secrets.release_token }}
           tag_name: ${{needs.job_check.outputs.openwrt-bandix_version}}
           files: ${{ env.FIRMWARE }}/*
