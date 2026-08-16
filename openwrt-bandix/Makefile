@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bandix
-PKG_VERSION:=0.12.9
+PKG_VERSION:=0.12.8
 PKG_RELEASE:=1
 
 PKG_LICENSE:=Apache-2.0
@@ -60,6 +60,7 @@ else ifeq ($(ARCH),powerpc64)
 else ifeq ($(ARCH),riscv64)
 	PKG_HASH:=916bf42c60c49df5c3ee6f4a60ce542d2b080788445b9bf47f3322eb9a5b66cf
 else ifeq ($(ARCH),x86_64)
+	PKG_SOURCE:=bandix-$(RUST_BANDIX_VERSION)-x86_64-unknown-linux-musl.tar.gz
 	PKG_HASH:=4909cf2e80861d082c4d4870950259d8c6f14e606f9dfa16c92514f178f3ae40
 else
 	PKG_HASH:=dummy

@@ -9,7 +9,7 @@ github_getLatest() {
 	curl -sSL "https://api.github.com/repos/$1/$2/releases/latest"
 }
 
-LATEST_INFO="$(github_getLatest timsaya bandix)"
+LATEST_INFO="$(github_getLatest Coolkids bandix)"
 
 # version check
 LATEST_VERSION="$(jq '.tag_name' -r <<< "$LATEST_INFO" | sed 's|^v||')"
