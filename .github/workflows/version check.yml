@@ -5,6 +5,9 @@ on:
   schedule:
   - cron: "0 5 * * 5"
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     name: Version check
@@ -30,6 +33,8 @@ jobs:
 
     - name: Commit and push files
       shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         cd openwrt-bandix/
         chmod +x ./update.sh
