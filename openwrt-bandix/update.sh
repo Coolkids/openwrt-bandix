@@ -4,15 +4,9 @@
 
 export CURDIR="$(cd "$(dirname "$0")"; pwd)"
 
-# func <user> <repo>
-github_getLatest() {
-	curl -sSL "https://api.github.com/repos/$1/$2/releases/latest"
-}
-
-LATEST_INFO="$(github_getLatest Coolkids bandix)"
-
 # version check
-LATEST_VERSION="$(jq '.tag_name' -r <<< "$LATEST_INFO" | sed 's|^v||')"
+LATEST_VERSION="$(gh release view --repo Coolkids/bandix --json tagName -q .tagName | sed 's|^v||')"
+echo "$LATEST_VERSION"
 [ -n "$LATEST_VERSION" ] || exit 1
 RUST_BANDIX_VERSION="$(sed -n 's|RUST_BANDIX_VERSION:=||p' "$CURDIR/Makefile")"
 [ "$RUST_BANDIX_VERSION" != "$LATEST_VERSION" ] || exit 0
