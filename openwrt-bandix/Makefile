@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bandix
-PKG_VERSION:=0.12.10
+PKG_VERSION:=0.12.11
 PKG_RELEASE:=1
 
 PKG_LICENSE:=Apache-2.0
@@ -13,7 +13,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/rust/rust-values.mk
 
 # 二进制文件的文件名和URL
-RUST_BANDIX_VERSION:=0.12.10
+RUST_BANDIX_VERSION:=0.12.11
 RUST_BINARY_FILENAME:=bandix-$(RUST_BANDIX_VERSION)-$(RUSTC_TARGET_ARCH).tar.gz
 
 
@@ -23,7 +23,7 @@ PKG_SOURCE_URL:=https://github.com/Coolkids/bandix/releases/download/v$(RUST_BAN
 
 # 修正二进制文件校验值
 ifeq ($(ARCH),aarch64)
-	PKG_HASH:=c097fac85b9ad2ffe1cf0bffc42beca0a59b3628b479be5f5c2791f805317100
+	PKG_HASH:=b744628ceed97acf74829a72d337903755bc274abac4be5e350e2c5f6280bfd3
 else ifeq ($(ARCH),arm) # update.sh skip this tag, do not delete this comment
 	# Ref https://github.com/openwrt/packages/blob/master/lang/rust/rust-values.mk
 
@@ -39,28 +39,28 @@ else ifeq ($(ARCH),arm) # update.sh skip this tag, do not delete this comment
 	endif
 
 	ifeq ($(ARM_CPU_TYPE),arm-armel)
-		PKG_HASH:=12ebd880d1e678f7a9fb595ccbbaa62140593fba314812c15027988511a93902
+		PKG_HASH:=019f7c804fa8963e3a92034cfad180e0c900ea9cfd2d42a513f2040d742cf4c1
 	else ifeq ($(ARM_CPU_TYPE),arm-armhf)
-		PKG_HASH:=cc5adde57f0a07f6bd4a28ead00df044522084d718790cfcfc5964a3339cb7dd
+		PKG_HASH:=3e0542b6f006b11b6017b80ac85a43ab57d81d4bf468fba2f83c057ef3cf28cc
 	else ifeq ($(ARM_CPU_TYPE),armv5te-armel)
-		PKG_HASH:=32838d51e89483addd7dc41c138af441a0997706265a9c8abc0ab71fa5f1bc6a
+		PKG_HASH:=4249b3d6a61fe79d87ed46b1d054a76b4969880f4a21ece670463e98f9bb79c4
 	else ifeq ($(ARM_CPU_TYPE),armv7-armel)
-		PKG_HASH:=c6202cbd4f4a75acac2fc94195f1cdde31cf958e8e913cbad518a08a9a0556c1
+		PKG_HASH:=bd2c46265c660c40fb13e03caabe13ad42971146686d3dbfc379c039c3671650
 	else ifeq ($(ARM_CPU_TYPE),armv7-armhf)
-		PKG_HASH:=78c826211060e2791b31f9019aa42d392607f7bff70b1542a0348aae2522aa9f
+		PKG_HASH:=ee03691476f3782c7ba634a1e231e326c896fc8ed80d0ef8aca76b9f69e4b2ac
 	else
 		PKG_HASH:=dummy
 	endif
 else ifeq ($(ARCH),mips)
-	PKG_HASH:=1b0d864be2f56557091623980060aa242497f05021d22646eb97b52d9525bd03
+	PKG_HASH:=89165e01922318ca793bf67e8cdb2adcebbd388fdbc84fb8d425403728162dcb
 else ifeq ($(ARCH),mipsel)
-	PKG_HASH:=dde6c11d91097cac252de0be5efe7052864bea22e6dad81bc9f1680781df09c8
+	PKG_HASH:=67503743282333ec2c7a73c07082fcc7c552917611e0ea85aede0978466bc4df
 else ifeq ($(ARCH),powerpc64)
-	PKG_HASH:=1a76919b0aec2e508eeed201de5920f2d3750ccf252be6c573ec58941ebea2a6
+	PKG_HASH:=96241b7b59163e1395a132b7c556ce834c6e9fa1e19a3adc8e612b74e9778b00
 else ifeq ($(ARCH),riscv64)
-	PKG_HASH:=93c82788140202761dd565d6a4c4a9782d04878fdbc1c2a00b3e2637146b3f57
+	PKG_HASH:=f9a5487b41cec42ec47c2af57b067589291c48e4bb58d4246cb726196f80e07b
 else ifeq ($(ARCH),x86_64)
-	PKG_HASH:=50662f1c4ae1ee61f8fe74b67a97a76a5ef9c8b22108221be04da6e730f5ca97
+	PKG_HASH:=dd2d9240da48f37f578410986880f36eb6042f89632f81656f22e72761e4e730
 	PKG_SOURCE:=bandix-$(RUST_BANDIX_VERSION)-x86_64-unknown-linux-musl.tar.gz
 else
 	PKG_HASH:=dummy
